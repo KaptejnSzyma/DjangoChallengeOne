@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-
+from ChallengeApp import views
 urlpatterns = [
+    url(r'^$', views.index, name="Index"),
     url(r'^admin/', admin.site.urls),
 ]
