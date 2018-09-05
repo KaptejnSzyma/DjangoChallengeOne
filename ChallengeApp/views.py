@@ -1,12 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from ChallengeApp.models import User
 # Create your views here.
 
 
 def index(request):
-    return HttpResponse("<em>My Second App</em>")
+    return render(request, 'ChallengeApp/index.html')
 
 
-def help(request):
-    my_dict = {'help': "Help Page"}
-    return render(request, 'ChallengeApp/help.html', context=my_dict)
+def users(request):
+    user_list = User.objects.order_by('first_name')
+    user_dict = {'users': user_list}
+    return render(request, 'ChallengeApp/users.html', context=user_dict)
